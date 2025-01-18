@@ -1,24 +1,40 @@
-// Parallax scrolling effect
 const parallax = document.getElementById("home-img-lg");
 const parallax1 = document.getElementById("parallax1");
 const parallax2 = document.getElementById("parallax2");
 
 window.addEventListener("scroll", function () {
-  let offset = window.pageYOffset;
+    let offset = window.pageYOffset;
+    
+    // Check if we're on mobile
+    const isMobile = window.innerWidth <= 768;
 
-  // Apply parallax effects
-  if (parallax) {
-    parallax.style.backgroundPositionX = offset * (-0.3) - 100 + "px";
-  }
-  if (parallax1) {
-    parallax1.style.backgroundPositionY = (offset - 3100) * 0.1 + "px";
-  }
-  if (parallax2) {
-    parallax2.style.backgroundPositionY = (offset - 4800) * (-0.1) + "px";
-  }
+    // Apply parallax effects with mobile conditions
+    if (parallax) {
+        parallax.style.backgroundPositionX = offset * (-0.3) - 100 + "px";
+    }
+    
+    if (parallax1) {
+        if (!isMobile) {
+            // Desktop version
+            parallax1.style.backgroundPositionY = (offset - 3100) * 0.1 + "px";
+        } else {
+            // Mobile version - adjust these values based on your needs
+            parallax1.style.backgroundPositionY = (offset - 1500) * 0.05 + "px";
+        }
+    }
+    
+    if (parallax2) {
+        if (!isMobile) {
+            // Desktop version
+            parallax2.style.backgroundPositionY = (offset - 4800) * (-0.1) + "px";
+        } else {
+            // Mobile version - adjust these values based on your needs
+            parallax2.style.backgroundPositionY = (offset - 2400) * (-0.05) + "px";
+        }
+    }
 
-  // Call reveal function
-  reveal();
+    // Call reveal function
+    reveal();
 });
 
 // Form handling elements
@@ -59,6 +75,19 @@ if (blessingCloseBtn) {
   });
 }
 
+
+window.addEventListener("resize", function() {
+  const offset = window.pageYOffset;
+  const isMobile = window.innerWidth <= 768;
+  
+  if (parallax1 && isMobile) {
+      parallax1.style.backgroundPositionY = (offset - 1500) * 0.05 + "px";
+  }
+  
+  if (parallax2 && isMobile) {
+      parallax2.style.backgroundPositionY = (offset - 2400) * (-0.05) + "px";
+  }
+});
 
 window.addEventListener("click", function (event) {
   if (event.target === rsvpFormContainer) {

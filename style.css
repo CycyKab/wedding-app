@@ -359,15 +359,26 @@
  
  /* <===================HANDS===================> */
  
- .hands{
-     height: 120vh;
-     width: 100%;
-     background-image: url('pictures/pic3.jpg');
-     background-size: cover;
-     background-position-y: center;
-     background-attachment: fixed;
-     background-repeat: no-repeat;
- }
+ .hands {
+    height: 120vh;
+    width: 100%;
+    background-image: url('pictures/pic3.jpg');
+    background-size: cover;
+    background-position-y: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+
+@media (max-width: 768px) {
+    .hands {
+        background-attachment: scroll; 
+        background-position: center; 
+        height: 60vh; 
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+}
  
      /* <===================STAY===================> */
      #stay{
@@ -422,6 +433,8 @@
      background-size: cover;
      background-position-y: top;
      background-repeat: no-repeat;
+     transform: translateZ(0);
+     -webkit-transform: translateZ(0);
      /* background-attachment: fixed; */
  }
  .registry-img-sm{
@@ -437,6 +450,7 @@
      .registry-img{
          width: 100%;
          height: 50vh;
+         
      }
      .registry-img-sm{
          margin-top: 10vh;
